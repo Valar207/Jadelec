@@ -409,6 +409,34 @@
           </ul>
         </nav>
       </footer>
+      <script>
+        (function () {
+          var header = document.querySelector('.Home_header__ZUWxe');
+          if (!header) return;
+          var burger = header.querySelector('.Home_menuburger__lgVpB');
+          var mobileNav = header.querySelector('.Home_nav__ZMqH2');
+          if (!burger || !mobileNav) return;
+
+          function setOpen(nextOpen) {
+            header.classList.toggle('is-menu-open', nextOpen);
+          }
+
+          burger.addEventListener('click', function () {
+            setOpen(!header.classList.contains('is-menu-open'));
+          });
+
+          mobileNav.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target && target.closest && target.closest('a')) {
+              setOpen(false);
+            }
+          });
+
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+          });
+        })();
+      </script>
     </div>
   </body>
 </html>

@@ -198,10 +198,15 @@
               <img src="img/icon/phon.svg" alt="telephone" />
               <div>
                 <h2>Contactez-nous via</h2>
-                <ul>
-                  <li>Tél : <a href="tel:01 48 35 50 51">01 48 35 50 51</a></li>
-                  <li>Mob : <a href="tel:06 98 23 62 58">06 98 23 62 58</a></li>
-                  <li>Fax : 01 48 35 44 86</li>
+                <ul class="Index_contactLines">
+                  <li>
+                    <span class="Index_contactLabel">Tél</span>
+                    <a class="Index_contactValue" href="tel:01 48 35 50 51">01 48 35 50 51</a>
+                  </li>
+                  <li>
+                    <span class="Index_contactLabel">Mobile</span>
+                    <a class="Index_contactValue" href="tel:06 98 23 62 58">06 98 23 62 58</a>
+                  </li>
                 </ul>
               </div>
             </section>
@@ -211,7 +216,7 @@
               <div>
                 <h2>Écrivez-nous par mail</h2>
                 <ul>
-                  <li><a href="mailto:contact@jadelec.net">contact@jadelec.net</a></li>
+                  <li><a href="mailto:val.rossi31795@gmail.com">val.rossi31795@gmail.com</a></li>
                 </ul>
               </div>
             </section>
@@ -242,7 +247,7 @@
             </section>
           </div>
 
-          <form>
+          <form id="contactForm">
             <div class="Index_input__hkbf3">
               <label for="nom">Votre nom (obligatoire)</label>
               <input
@@ -327,6 +332,65 @@
           </ul>
         </nav>
       </footer>
+            <script>
+        (function () {
+          var header = document.querySelector('.Home_header__ZUWxe');
+          if (!header) return;
+          var burger = header.querySelector('.Home_menuburger__lgVpB');
+          var mobileNav = header.querySelector('.Home_nav__ZMqH2');
+          if (!burger || !mobileNav) return;
+
+          function setOpen(nextOpen) {
+            header.classList.toggle('is-menu-open', nextOpen);
+          }
+
+          burger.addEventListener('click', function () {
+            setOpen(!header.classList.contains('is-menu-open'));
+          });
+
+          mobileNav.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target && target.closest && target.closest('a')) {
+              setOpen(false);
+            }
+          });
+
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+          });
+
+          var contactForm = document.getElementById('contactForm');
+          if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+              e.preventDefault();
+
+              var name = document.getElementById('nom');
+              var email = document.getElementById('email');
+              var subject = document.getElementById('sujet');
+              var message = document.getElementById('message');
+
+              var nameValue = name ? name.value.trim() : '';
+              var emailValue = email ? email.value.trim() : '';
+              var subjectValue = subject ? subject.value.trim() : '';
+              var messageValue = message ? message.value.trim() : '';
+
+              var mailTo = 'val.rossi31795@gmail.com';
+              var mailSubject = subjectValue || 'Demande via le site Jadelec';
+              var mailBody =
+                'Nom: ' + nameValue + '\n' +
+                'Email: ' + emailValue + '\n\n' +
+                (messageValue || '');
+
+              var href =
+                'mailto:' + encodeURIComponent(mailTo) +
+                '?subject=' + encodeURIComponent(mailSubject) +
+                '&body=' + encodeURIComponent(mailBody);
+
+              window.location.href = href;
+            });
+          }
+        })();
+      </script>
     </div>
   </body>
 </html>
