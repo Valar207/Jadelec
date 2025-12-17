@@ -193,6 +193,7 @@ main {
   display: flex;
   gap: 1.75rem;
   font-size: 0.98rem;
+  white-space: nowrap;
 }
 
 .Home_header__ZUWxe nav a {
@@ -650,7 +651,7 @@ main {
 }
 
 .Index_input__hkbf3 textarea {
-  min-height: 150px;
+  height: 200px;
   resize: vertical;
 }
 
