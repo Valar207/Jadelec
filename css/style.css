@@ -8,7 +8,8 @@
 }
 
 .Mention_main {
-  padding: 3rem 6vw 4rem;
+  padding: var(--page-padding-y-top) var(--page-padding-x)
+    var(--page-padding-y-bottom);
 }
 
 .Mention_hero {
@@ -119,6 +120,19 @@ ul {
    --brand-blue-soft: #dbeafe;
    --brand-blue-rgb: 74, 115, 184;
    --brand-blue-dark-rgb: 53, 90, 158;
+   --page-padding-x: 6vw;
+   --page-padding-y-top: 3rem;
+   --page-padding-y-bottom: 4rem;
+   --container-max: 75rem;
+   --radius-card: 1.75rem;
+   --shadow-card: 0 20px 50px rgba(15, 23, 42, 0.12);
+   --border-subtle: 1px solid #e5e7eb;
+   --section-gap: 4rem;
+   --space-1: 0.5rem;
+   --space-2: 0.75rem;
+   --space-3: 1rem;
+   --space-4: 1.5rem;
+   --space-5: 2.5rem;
  }
 
 /* Layout global */
@@ -142,7 +156,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 6vw;
+  padding: 0.75rem var(--page-padding-x);
   gap: 1.5rem;
 }
 
@@ -219,7 +233,8 @@ main {
 
 /* SECTION HERO */
 .Index_main__0G6GN {
-  padding: 3rem 6vw 4rem;
+  padding: var(--page-padding-y-top) var(--page-padding-x)
+    var(--page-padding-y-bottom);
 }
 
 .Index_head__doOlP {
@@ -227,14 +242,23 @@ main {
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
   gap: 2.5rem;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--section-gap);
 }
 
 .Index_top__xLzxD h1 {
   font-size: clamp(2.1rem, 3vw, 2.7rem);
   font-weight: 700;
   color: #0f172a;
-  margin-bottom: 1rem;
+}
+
+.Index_top__xLzxD {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.Index_top__xLzxD h1,
+.Index_top__xLzxD p {
+  margin: 0;
 }
 
 .Index_top__xLzxD p {
@@ -260,6 +284,12 @@ main {
   box-shadow: 0 10px 25px rgba(var(--brand-blue-dark-rgb), 0.25);
   transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
     filter 0.15s ease-out;
+  width: fit-content;
+  justify-self: start;
+}
+
+.Index_head__doOlP .Index_contact__FoLOD a {
+  margin-top: 0;
 }
 
 .Index_contact__FoLOD a:hover {
@@ -296,12 +326,12 @@ main {
 
 /* SECTION – NOS METIERS */
 .Index_section__qMdV8 {
-  margin-bottom: 4.5rem;
+  margin-bottom: var(--section-gap);
 }
 
 .Index_nosmetiers__QAyuZ {
   background: #ffffff;
-  border-radius: 1.75rem;
+  border-radius: var(--radius-card);
   padding: 2.5rem 2.75rem;
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
 }
@@ -374,7 +404,7 @@ main {
 
 /* BANNIERE INTERMEDIAIRE */
 .Index_banne__58o_E {
-  margin: 4rem 0;
+  margin: var(--section-gap) 0;
   padding: 2.3rem 2.5rem;
   border-radius: 1.75rem;
   background: radial-gradient(circle at top left, var(--brand-blue-soft) 0, var(--brand-blue-dark) 45%, #0f172a 100%);
@@ -410,13 +440,26 @@ main {
 
 .Index_contact__FoLOD {
   display: grid;
-  gap: 1.5rem;
+  gap: var(--space-4);
+}
+
+.Index_formcontact__teV2w .Index_contact__FoLOD {
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  padding: 2.1rem 2.25rem;
+  box-shadow: var(--shadow-card);
+  border: var(--border-subtle);
 }
 
 .Index_coordonnee__MauIH {
-  display: flex;
-  gap: 1.1rem;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: 1.15rem 1.1rem;
+  border-radius: 1.25rem;
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
 }
 
 .Index_coordonnee__MauIH img {
@@ -426,8 +469,23 @@ main {
 
 .Index_coordonnee__MauIH h2 {
   font-size: 1rem;
-  margin-bottom: 0.25rem;
   color: #0f172a;
+}
+
+.Index_coordonnee__MauIH > div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.Index_coordonnee__MauIH h2,
+.Index_coordonnee__MauIH p {
+  margin: 0;
+}
+
+.Index_coordonnee__MauIH ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
 }
 
 .Index_coordonnee__MauIH li {
@@ -435,16 +493,17 @@ main {
   color: #4b5563;
 }
 
+.Index_contactLines {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
 .Index_contactLines li {
   display: grid;
   grid-template-columns: 3.2rem 1fr;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.55rem;
-}
-
-.Index_contactLines li:first-child {
-  margin-top: 0.35rem;
 }
 
 .Index_contactLabel {
@@ -456,7 +515,7 @@ main {
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  padding: 0.55rem 1.05rem;
+  padding: 0.65rem 1.15rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
   color: #ffffff;
@@ -468,9 +527,10 @@ main {
 
 .Index_formcontact__teV2w form {
   background: #ffffff;
-  border-radius: 1.75rem;
+  border-radius: var(--radius-card);
   padding: 2.1rem 2.25rem;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-card);
+  border: var(--border-subtle);
   display: grid;
   gap: 1.1rem;
 }
@@ -542,10 +602,10 @@ main {
 
 /* FOOTER */
 .Home_footer__wJNRn {
-  margin-top: 4rem;
+  margin-top: var(--section-gap);
   background: #020617;
   color: #e5e7eb;
-  padding: 2.5rem 6vw 2rem;
+  padding: 2.5rem var(--page-padding-x) 2rem;
 }
 
 .Home_footer__wJNRn nav ul {
@@ -701,7 +761,8 @@ main {
 
 /* PAGE FOURNISSEURS */
 .Fournisseurs_main {
-  padding: 3rem 6vw 4rem;
+  padding: var(--page-padding-y-top) var(--page-padding-x)
+    var(--page-padding-y-bottom);
 }
 
 .Fournisseurs_hero {
@@ -826,7 +887,8 @@ main {
 
 /* PAGE REALISATIONS */
 .Realisation_main {
-  padding: 3rem 6vw 4rem;
+  padding: var(--page-padding-y-top) var(--page-padding-x)
+    var(--page-padding-y-bottom);
 }
 
 .Realisation_hero {
@@ -843,7 +905,7 @@ main {
 .Realisation_projects {
   display: grid;
   gap: 3rem;
-  max-width: 75rem;
+  max-width: var(--container-max);
   margin: 0 auto;
 }
 
