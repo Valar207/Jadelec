@@ -554,6 +554,7 @@ main {
 .Index_coordonnee__MauIH li {
   font-size: 0.95rem;
   color: #4b5563;
+  min-width: 0;
 }
 
 .Index_contactLines {
@@ -567,6 +568,7 @@ main {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .Index_contactLabel {
@@ -580,6 +582,9 @@ main {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
   padding: 0.65rem 1.15rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
@@ -587,6 +592,28 @@ main {
   font-weight: 700;
   letter-spacing: 0.01em;
   box-shadow: 0 10px 25px rgba(var(--brand-blue-dark-rgb), 0.22);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Index_coordonnee__MauIH a[href^="mailto:"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 25px rgba(var(--brand-blue-dark-rgb), 0.22);
+  text-decoration: none;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

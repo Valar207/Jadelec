@@ -281,6 +281,7 @@
                 Jadelec.
               </label>
             </div>
+            <p id="contactFormStatus" aria-live="polite"></p>
             <input
               type="submit"
               class="Index_send__NsLWp"
@@ -347,6 +348,9 @@
             contactForm.addEventListener('submit', function (e) {
               e.preventDefault();
 
+              var status = document.getElementById('contactFormStatus');
+              if (status) status.textContent = '';
+
               var name = document.getElementById('nom');
               var email = document.getElementById('email');
               var subject = document.getElementById('sujet');
@@ -369,7 +373,21 @@
                 '?subject=' + encodeURIComponent(mailSubject) +
                 '&body=' + encodeURIComponent(mailBody);
 
-              window.location.href = href;
+              var before = document.visibilityState;
+              var a = document.createElement('a');
+              a.href = href;
+              a.style.display = 'none';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+
+              window.setTimeout(function () {
+                var after = document.visibilityState;
+                if (before === 'visible' && after === 'visible' && status) {
+                  status.textContent =
+                    "Si rien ne s'ouvre, configure une application mail sur ton appareil (ou utilise un service de formulaire).";
+                }
+              }, 900);
             });
           }
         })();
