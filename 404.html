@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jadelec – Page introuvable</title>
+    <meta name="robots" content="noindex,follow" />
+    <meta name="theme-color" content="#355a9e" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="__next">
+      <header class="Home_header__ZUWxe">
+        <div class="Home_logo__ZEOng">
+          <a href="index.html">
+            <picture><source srcset="img/icon/JADELEC Logo.png.webp" type="image/webp" /><img src="img/icon/JADELEC Logo.png" alt="logo jadelec" width="1322" height="359" /></picture>
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html#about">Qui sommes-nous ?</a></li>
+            <li><a href="realisation.html">Réalisations</a></li>
+            <li><a href="fournisseurs.html">Nos Fournisseurs</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="Home_nav__ZMqH2" id="mobile-nav">
+          <ul>
+            <li><a href="index.html#about">Qui sommes-nous ?</a></li>
+            <li><a href="realisation.html">Nos Réalisations</a></li>
+            <li><a href="fournisseurs.html">Nos fournisseurs</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <section class="Home_phone___TthO">
+          <img src="img/icon/phonetel.svg" alt="logo phone" />
+          <a href="tel:+33148355051"><strong>01 48 35 50 51</strong></a>
+        </section>
+        <button
+          type="button"
+          class="Home_menuburger__lgVpB"
+          aria-label="Ouvrir le menu"
+          aria-controls="mobile-nav"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </header>
+
+      <main class="Mention_main">
+        <section class="Mention_hero">
+          <h1>Page introuvable</h1>
+          <p>La page demandée n’existe pas ou a été déplacée.</p>
+        </section>
+
+        <section class="Mention_card">
+          <p>
+            <a href="index.html">Retour à l’accueil</a>
+          </p>
+          <p>
+            <a href="index.html#contact">Nous contacter</a>
+          </p>
+        </section>
+      </main>
+
+      <footer class="Home_footer__wJNRn">
+        <nav>
+          <ul>
+            <li class="Home_logo__ZEOng">
+              <a href="index.html">
+                <picture><source srcset="img/icon/JADELEC Logo.png.webp" type="image/webp" /><img src="img/icon/JADELEC Logo.png" alt="logo jadelec" width="1322" height="359" /></picture>
+              </a>
+              <p>© 2024 Jadelec</p>
+            </li>
+            <li>
+              <h3>Service</h3>
+              <a href="index.html#about">Electricité générale</a>
+            </li>
+            <li>
+              <h3>Aide</h3>
+              <a href="mentionlegal.html">FAQ</a>
+              <a href="index.html#contact">Contact</a>
+            </li>
+            <li>
+              <h3>Stratégie</h3>
+              <a href="mentionlegal.html">Termes et conditions</a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+
+      <script>
+        (function () {
+          var header = document.querySelector('.Home_header__ZUWxe');
+          if (!header) return;
+          var burger = header.querySelector('.Home_menuburger__lgVpB');
+          var mobileNav = header.querySelector('.Home_nav__ZMqH2');
+          if (!burger || !mobileNav) return;
+
+          function setOpen(nextOpen) {
+            header.classList.toggle('is-menu-open', nextOpen);
+            burger.setAttribute('aria-expanded', String(!!nextOpen));
+          }
+
+          burger.addEventListener('click', function () {
+            setOpen(!header.classList.contains('is-menu-open'));
+          });
+
+          mobileNav.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target && target.closest && target.closest('a')) {
+              setOpen(false);
+            }
+          });
+
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+          });
+        })();
+      </script>
+    </div>
+  </body>
+</html>

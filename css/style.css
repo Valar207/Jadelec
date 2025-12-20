@@ -244,7 +244,20 @@ main {
   cursor: pointer;
   padding: 0.5rem;
   flex: 0 0 auto;
+  background: transparent;
+  border: 0;
+  color: inherit;
 }
+
+ .Home_menuburger__lgVpB:focus {
+  outline: none;
+ }
+
+ .Home_menuburger__lgVpB:focus-visible {
+  outline: 3px solid rgba(var(--brand-blue-rgb), 0.55);
+  outline-offset: 3px;
+  border-radius: 0.6rem;
+ }
 
 .Home_menuburger__lgVpB span {
   width: 20px;

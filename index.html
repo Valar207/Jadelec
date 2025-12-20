@@ -93,7 +93,7 @@
       <header class="Home_header__ZUWxe">
         <div class="Home_logo__ZEOng">
           <a href="#">
-            <img src="img/icon/JADELEC Logo.png" alt="logo jadelec" />
+            <picture><source srcset="img/icon/JADELEC Logo.png.webp" type="image/webp" /><img src="img/icon/JADELEC Logo.png" alt="logo jadelec" width="1322" height="359" /></picture>
           </a>
         </div>
         <nav>
@@ -104,7 +104,7 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <nav class="Home_nav__ZMqH2">
+        <nav class="Home_nav__ZMqH2" id="mobile-nav">
           <ul>
             <li><a href="#about">Qui sommes-nous ?</a></li>
             <li><a href="realisation.html">Nos Réalisations</a></li>
@@ -116,9 +116,15 @@
           <img src="img/icon/phonetel.svg" alt="logo phone" />
           <a href="tel:+33148355051"><strong>01 48 35 50 51</strong></a>
         </section>
-        <div class="Home_menuburger__lgVpB">
+        <button
+          type="button"
+          class="Home_menuburger__lgVpB"
+          aria-label="Ouvrir le menu"
+          aria-controls="mobile-nav"
+          aria-expanded="false"
+        >
           <span></span><span></span><span></span>
-        </div>
+        </button>
       </header>
 
       <main class="Index_main__0G6GN">
@@ -378,7 +384,7 @@
           <ul>
             <li class="Home_logo__ZEOng">
               <a href="#">
-                <img src="img/icon/JADELEC Logo.png" alt="logo jadelec" />
+                <picture><source srcset="img/icon/JADELEC Logo.png.webp" type="image/webp" /><img src="img/icon/JADELEC Logo.png" alt="logo jadelec" width="1322" height="359" /></picture>
               </a>
               <p>© 2024 Jadelec</p>
             </li>
@@ -408,6 +414,7 @@
 
           function setOpen(nextOpen) {
             header.classList.toggle('is-menu-open', nextOpen);
+            burger.setAttribute('aria-expanded', String(!!nextOpen));
           }
 
           burger.addEventListener('click', function () {
