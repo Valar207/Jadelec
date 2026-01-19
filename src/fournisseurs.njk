@@ -1,0 +1,136 @@
+---
+layout: layouts/base.njk
+title: "Jadelec – Nos fournisseurs"
+permalink: "/fournisseurs.html"
+---
+
+<div id="__next">
+  <header class="Home_header__ZUWxe">
+    <div class="Home_logo__ZEOng">
+      <a href="/">
+        <picture><source srcset="img/icon/JADELEC Logo.png.webp" type="image/webp" /><img src="img/icon/JADELEC Logo.png" alt="logo jadelec" width="1322" height="359" /></picture>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/#about">Qui sommes-nous ?</a></li>
+        <li><a href="/realisation.html">Réalisations</a></li>
+        <li><a href="/fournisseurs.html">Nos Fournisseurs</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="Home_nav__ZMqH2" id="mobile-nav">
+      <ul>
+        <li><a href="/#about">Qui sommes-nous ?</a></li>
+        <li><a href="/realisation.html">Nos Réalisations</a></li>
+        <li><a href="/fournisseurs.html">Nos fournisseurs</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <section class="Home_phone___TthO">
+      <img src="img/icon/phonetel.svg" alt="logo phone" />
+      <a href="tel:+33148355051"><strong>01 48 35 50 51</strong></a>
+    </section>
+    <button
+      type="button"
+      class="Home_menuburger__lgVpB"
+      aria-label="Ouvrir le menu"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main class="Fournisseurs_main">
+    <section class="Fournisseurs_hero">
+      <h1>{{ fournisseurs.heroTitle }}</h1>
+      <p>{{ fournisseurs.heroIntro }}</p>
+    </section>
+
+    <section class="Fournisseurs_criteria">
+      <h3>{{ fournisseurs.criteriaTitle }}</h3>
+      <p class="Fournisseurs_subtitle">{{ fournisseurs.criteriaSubtitle }}</p>
+      <ul>
+        {%- for item in fournisseurs.criteriaItems -%}
+          <li>
+            <img src="img/icon/check.svg" alt="check" />
+            <span>{{ item }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </section>
+
+    {%- for section in fournisseurs.sections -%}
+      <section class="Fournisseurs_section">
+        <h2>{{ section.title }}</h2>
+        <div class="Fournisseurs_grid">
+          {%- for card in section.cards -%}
+            <article class="Fournisseurs_card">
+              <div class="Fournisseurs_logo">
+                <picture><img src="{{ card.image }}" alt="{{ card.imageAlt }}" loading="lazy" decoding="async" /></picture>
+              </div>
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.description }}</p>
+            </article>
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endfor -%}
+  </main>
+
+  <footer class="Home_footer__wJNRn">
+    <nav>
+      <ul>
+        <li class="Home_logo__ZEOng">
+          <a href="/">
+            <picture><source srcset="img/icon/JADELEC Logo.png.webp" type="image/webp" /><img src="img/icon/JADELEC Logo.png" alt="logo jadelec" width="1322" height="359" /></picture>
+          </a>
+          <p>© 2024 Jadelec</p>
+        </li>
+        <li>
+          <h3>Service</h3>
+          <a href="/#about">Electricité générale</a>
+        </li>
+        <li>
+          <h3>Aide</h3>
+          <a href="/mentionlegal.html">FAQ</a>
+          <a href="/#contact">Contact</a>
+        </li>
+        <li>
+          <h3>Stratégie</h3>
+          <a href="/mentionlegal.html">Termes et conditions</a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+  <script>
+    (function () {
+      var header = document.querySelector('.Home_header__ZUWxe');
+      if (!header) return;
+      var burger = header.querySelector('.Home_menuburger__lgVpB');
+      var mobileNav = header.querySelector('.Home_nav__ZMqH2');
+      if (!burger || !mobileNav) return;
+
+      function setOpen(nextOpen) {
+        header.classList.toggle('is-menu-open', nextOpen);
+        burger.setAttribute('aria-expanded', String(!!nextOpen));
+      }
+
+      burger.addEventListener('click', function () {
+        setOpen(!header.classList.contains('is-menu-open'));
+      });
+
+      mobileNav.addEventListener('click', function (e) {
+        var target = e.target;
+        if (target && target.closest && target.closest('a')) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
+  </script>
+</div>

@@ -1,0 +1,27 @@
+{
+  "heroTitle": "Nos fournisseurs en électricité générale",
+  "heroIntro": "Jadelec sélectionne soigneusement ses fournisseurs en fonction de la technicité, de la durabilité, du rapport qualité‑prix, de la largeur des gammes, de la qualité du service après‑vente et de la régularité des approvisionnements.",
+  "criteriaTitle": "Nos critères de sélection",
+  "criteriaSubtitle": "Nous recommandons des marques et des gammes éprouvées pour nos installations.",
+  "criteriaItems": [
+    "Technicité",
+    "Durabilité",
+    "Rapport qualité‑prix",
+    "Largeur des gammes",
+    "Qualité du service après‑vente",
+    "Régularité des approvisionnements"
+  ],
+  "sections": [
+    {
+      "title": "Courant fort et courant faible",
+      "cards": [
+        {
+          "image": "img/icon/hager logo.png",
+          "imageAlt": "Logo Hager",
+          "title": "Hager",
+          "description": "Solutions pour la distribution électrique et les systèmes résidentiels et tertiaires."
+        }
+      ]
+    }
+  ]
+}

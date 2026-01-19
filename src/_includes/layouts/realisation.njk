@@ -1,0 +1,17 @@
+<article class="Realisation_project">
+  <div class="Realisation_project_content">
+    <h2>{{ title }}</h2>
+
+    {% if images and images.length %}
+      <div class="Realisation_project_images">
+        {% for img in images %}
+          <picture><img src="{{ img.image or img }}" alt="" loading="lazy" decoding="async" /></picture>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="Realisation_project_details">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>

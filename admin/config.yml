@@ -1,0 +1,87 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "site"
+    label: "Site"
+    files:
+      - name: "seo"
+        label: "SEO (Titre + Description)"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Titre du site", name: "metaTitle", widget: "string" }
+          - { label: "Description (meta)", name: "metaDescription", widget: "text" }
+
+  - name: "postes"
+    label: "Postes"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "hidden", default: ["postes"] }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "realisations"
+    label: "Réalisations"
+    folder: "src/content/realisations"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - {
+          label: "Images (1 à 4)",
+          name: "images",
+          widget: "list",
+          min: 1,
+          max: 4,
+          field: { label: "Image", name: "image", widget: "image" }
+        }
+      - { label: "Résumé (liste)", name: "summary", widget: "text", required: false }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/realisation-detail.njk" }
+      - { label: "Tags", name: "tags", widget: "hidden", default: ["realisations"] }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "fournisseurs"
+    label: "Fournisseurs"
+    files:
+      - name: "fournisseurs"
+        label: "Page fournisseurs"
+        file: "src/_data/fournisseurs.json"
+        fields:
+          - { label: "Titre (hero)", name: "heroTitle", widget: "string" }
+          - { label: "Intro (hero)", name: "heroIntro", widget: "text" }
+          - { label: "Titre critères", name: "criteriaTitle", widget: "string" }
+          - { label: "Sous-titre critères", name: "criteriaSubtitle", widget: "string" }
+          - { label: "Critères", name: "criteriaItems", widget: "list", field: { label: "Critère", name: "item", widget: "string" } }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Titre de section", name: "title", widget: "string" }
+              - label: "Cartes"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Alt image", name: "imageAlt", widget: "string" }
+                  - { label: "Titre", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Accueil"
+        file: "src/index.md"
+        fields:
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Texte d'accueil", name: "body", widget: "markdown" }

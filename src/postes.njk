@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+title: "Postes"
+permalink: "/postes/"
+---
+
+<h1>Postes</h1>
+
+<ul>
+  {%- for post in collections.postes | reverse -%}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </li>
+  {%- endfor -%}
+</ul>
