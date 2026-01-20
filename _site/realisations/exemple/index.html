@@ -135,11 +135,22 @@
     <script>
       (function () {
         if (!window.netlifyIdentity) return;
-        var shouldRedirect = window.location.hash && window.location.hash.indexOf('confirmation_token=') > -1;
-        if (shouldRedirect) {
-          window.netlifyIdentity.on('login', function () {
-            window.location.href = '/admin/';
-          });
+        console.log('Netlify Identity loaded');
+        var hash = window.location.hash || '';
+        var hasToken =
+          hash.indexOf('confirmation_token=') > -1 ||
+          hash.indexOf('invite_token=') > -1 ||
+          hash.indexOf('recovery_token=') > -1;
+
+        window.netlifyIdentity.on('login', function () {
+          console.log('User logged in, redirecting to admin');
+          window.location.href = '/admin/';
+        });
+
+        if (hasToken) {
+          console.log('Token found, initializing Netlify Identity');
+          window.netlifyIdentity.init();
+          window.netlifyIdentity.open();
         }
       })();
     </script>
