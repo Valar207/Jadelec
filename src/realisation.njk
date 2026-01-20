@@ -49,7 +49,7 @@ permalink: "/realisation.html"
 
     <div class="Realisation_projects">
       {%- for item in collections.realisations | reverse -%}
-        <article class="Realisation_project">
+        <article class="Realisation_project" data-href="{{ item.url }}" tabindex="0" role="link">
           <div class="Realisation_project_content">
             <h2><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
 
@@ -129,6 +129,32 @@ permalink: "/realisation.html"
 
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') setOpen(false);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.Realisation_project[data-href]');
+      if (!cards || !cards.length) return;
+
+      function navigate(card) {
+        var href = card.getAttribute('data-href');
+        if (href) window.location.href = href;
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          var target = e.target;
+          if (target && target.closest && target.closest('a')) return;
+          navigate(card);
+        });
+
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigate(card);
+          }
+        });
       });
     })();
   </script>

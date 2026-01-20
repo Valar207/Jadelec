@@ -55,7 +55,7 @@
       <h1>Nos Réalisations</h1>
     </section>
 
-    <div class="Realisation_projects"><article class="Realisation_project">
+    <div class="Realisation_projects"><article class="Realisation_project" data-href="/realisations/exemple/" tabindex="0" role="link">
           <div class="Realisation_project_content">
             <h2><a href="/realisations/exemple/">Restructuration complète du centre d&#39;animation Daviel</a></h2>
 
@@ -133,6 +133,32 @@
 
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') setOpen(false);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.Realisation_project[data-href]');
+      if (!cards || !cards.length) return;
+
+      function navigate(card) {
+        var href = card.getAttribute('data-href');
+        if (href) window.location.href = href;
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          var target = e.target;
+          if (target && target.closest && target.closest('a')) return;
+          navigate(card);
+        });
+
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigate(card);
+          }
+        });
       });
     })();
   </script>
