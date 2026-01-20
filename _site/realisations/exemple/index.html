@@ -131,5 +131,17 @@
   </script>
 </div>
 
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      (function () {
+        if (!window.netlifyIdentity) return;
+        var shouldRedirect = window.location.hash && window.location.hash.indexOf('confirmation_token=') > -1;
+        if (shouldRedirect) {
+          window.netlifyIdentity.on('login', function () {
+            window.location.href = '/admin/';
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
