@@ -11,6 +11,17 @@
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', user => {
+          const hash = window.location.hash || '';
+          const hasToken =
+            hash.includes('invite_token=') ||
+            hash.includes('confirmation_token=') ||
+            hash.includes('recovery_token=');
+
+          if (hasToken) {
+            window.netlifyIdentity.open();
+            return;
+          }
+
           if (!user) window.netlifyIdentity.open();
         });
       }

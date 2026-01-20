@@ -168,20 +168,22 @@
     <script>
       (function () {
         if (!window.netlifyIdentity) return;
-        console.log('Netlify Identity loaded');
         var hash = window.location.hash || '';
         var hasToken =
           hash.indexOf('confirmation_token=') > -1 ||
           hash.indexOf('invite_token=') > -1 ||
           hash.indexOf('recovery_token=') > -1;
 
+        if (hasToken && window.location.pathname.indexOf('/admin') !== 0) {
+          window.location.href = '/admin/' + hash;
+          return;
+        }
+
         window.netlifyIdentity.on('login', function () {
-          console.log('User logged in, redirecting to admin');
           window.location.href = '/admin/';
         });
 
         if (hasToken) {
-          console.log('Token found, initializing Netlify Identity');
           window.netlifyIdentity.init();
           window.netlifyIdentity.open();
         }
